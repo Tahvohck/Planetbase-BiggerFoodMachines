@@ -58,9 +58,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ZZZ_UpdateLists\ZZZ_UpdateLists.csproj">
+    <ProjectReference Include="..\modhooker\Modhooker.csproj">
       <Project>{0428dd26-4864-42f4-9869-9ed19ea26b41}</Project>
-      <Name>ZZZ_UpdateLists</Name>
+      <Name>Modhooker</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
