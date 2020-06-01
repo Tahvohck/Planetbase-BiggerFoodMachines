@@ -1,46 +1,26 @@
 ﻿using Planetbase;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using HarmonyLib;
+using System.Reflection;
+using UnityModManagerNet;
 
 namespace Tahvohck_Mods
 {
-    public class BFM_Main : IMod
+    using EntryData = UnityModManager.ModEntry;
+    using ModLogger = UnityModManager.ModEntry.ModLogger;
+
+    public class BFM_Main
     {
-        public void Init()
+        internal static ModLogger Logger;
+
+        public static void Init(EntryData data)
         {
-            TahvUtil.Log("Initialized.");
-            ZZZ_Modhooker.PreResetEvent += Setup;
+            Logger = data.Logger;
+            MealMaker mm = ComponentTypeList.find<MealMaker>() as MealMaker;
+            typeof(MealMaker)
+                    .GetField("mEmbeddedResourceCount", BindingFlags.NonPublic | BindingFlags.Instance)
+                    .SetValue(mm, 12);
 #if DEBUG
-            ZZZ_Modhooker.PostResetEvent += Runcheck;
+            Logger.Log($"MealMaker slots: {mm.getEmbeddedResourceCount()}");
 #endif
-        }
-
-        public void Update() { }
-
-        public void Setup(object sender, EventArgs e)
-        {
-            new Harmony(typeof(BFM_Main).FullName).PatchAll();
-            TahvUtil.Log("Patched.");
-        }
-
-        public void Runcheck(object sender, EventArgs evArgs)
-        {
-            MealMaker mm = (MealMaker)TypeList<ComponentType, ComponentTypeList>.find<MealMaker>();
-            TahvUtil.Log($"MealMaker slots: {mm.getEmbeddedResourceCount()}");
-        } 
-    }
-
-
-    [HarmonyPatch(typeof(MealMaker), MethodType.Constructor)]
-    public class Patches
-    {
-        [HarmonyPostfix]
-        public static void MoreMealMakerSlots(MealMaker __instance)
-        {
-            __instance.mEmbeddedResourceCount = 12;
         }
     }
 }
