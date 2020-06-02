@@ -67,12 +67,22 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\Info.json">
+      <DependentUpon>Info.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\version.t4" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AssemblyVersions.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AssemblyVersions.cs</LastGenOutput>
+    </Content>
+    <Content Include="Properties\Info.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Info.json</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
