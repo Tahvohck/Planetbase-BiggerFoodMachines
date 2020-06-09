@@ -1,4 +1,5 @@
 ﻿using Planetbase;
+using System;
 using System.Reflection;
 using UnityModManagerNet;
 
@@ -11,6 +12,7 @@ namespace Tahvohck_Mods
     {
         internal static ModLogger Logger;
 
+        [LoaderOptimization(LoaderOptimization.NotSpecified)]
         public static void Init(EntryData data)
         {
             Logger = data.Logger;
