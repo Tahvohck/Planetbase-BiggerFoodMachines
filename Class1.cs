@@ -18,6 +18,7 @@ namespace Tahvohck_Mods
         {
             Logger = data.Logger;
             defaultOnUpdate = data.OnUpdate;
+            data.OnUpdate = Update;
         }
 
         public static void Update(EntryData data, float tDelta)
