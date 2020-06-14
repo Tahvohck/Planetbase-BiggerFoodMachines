@@ -1,4 +1,5 @@
 ﻿using Planetbase;
+using System;
 using System.Reflection;
 using UnityModManagerNet;
 
@@ -10,10 +11,17 @@ namespace Tahvohck_Mods
     public class BFM_Main
     {
         internal static ModLogger Logger;
+        internal static Action<EntryData, float> defaultOnUpdate;
 
+        [LoaderOptimization(LoaderOptimization.NotSpecified)]
         public static void Init(EntryData data)
         {
             Logger = data.Logger;
+            defaultOnUpdate = data.OnUpdate;
+        }
+
+        public static void Update(EntryData data, float tDelta)
+        {
             MealMaker mm = ComponentTypeList.find<MealMaker>() as MealMaker;
             typeof(MealMaker)
                     .GetField("mEmbeddedResourceCount", BindingFlags.NonPublic | BindingFlags.Instance)
@@ -21,6 +29,7 @@ namespace Tahvohck_Mods
 #if DEBUG
             Logger.Log($"MealMaker slots: {mm.getEmbeddedResourceCount()}");
 #endif
+            data.OnUpdate = defaultOnUpdate;
         }
     }
 }
