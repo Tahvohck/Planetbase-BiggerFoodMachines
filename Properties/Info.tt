@@ -2,10 +2,14 @@
 <#@ include file="version.t4" #>
 <#@ output extension=".json" #>
 {
-    "ID":           "BiggerFoodMachines",
-    "Author":       "Tahvohck",
+    "EntryMethod":  "FALSE-STUB",
     "Version":      "<#= this.version #>.<#= this.buildID #>",
+    "AssemblyName": "FALSE-STUB",
+    "Repository":   "FALSE-STUB",
+    "HomePage":     "FALSE-STUB",
+    "Author":       "FALSE-STUB",
 
-    "EntryMethod":   "FALSE-STUB",
+    "Requirements": ["PBUtilities"],
+    "ID":           "BiggerFoodMachines",
     "DisplayName":  "More Storage in Food Machines"
 }
