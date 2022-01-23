@@ -2,7 +2,7 @@
 <#@ include file="version.t4" #>
 <#@ output extension=".json" #>
 {
-    "EntryMethod":  "FALSE-STUB",
+    "EntryMethod":  "Tahvohck_Mods.BFM_Main.Init",
     "Version":      "<#= this.version #>.<#= this.buildID #>",
     "AssemblyName": "FALSE-STUB",
     "Repository":   "FALSE-STUB",
